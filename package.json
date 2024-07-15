@@ -1,5 +1,5 @@
 {
-  "name": "pizzashop",
+  "name": "decorHome",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://nkoblianskyi.github.io/decorHome/",
@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build -r https://github.com/nkoblianskyi/decorHome.git"
   },
   "eslintConfig": {
     "extends": [
