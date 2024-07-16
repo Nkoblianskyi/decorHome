@@ -1,18 +1,24 @@
-import { Shop } from "./components/shop";
-import { Header } from "./components/header";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Preview } from "./components/preview";
 import { Hero } from "./components/hero";
 import { About } from "./components/about";
-import { Footer } from "./components/footer";
+import { Layout } from "./layouts/layout";
+import { ShopPage } from './ShopPage';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Hero/>
-      <Shop/>
-      <About/>
-      <Footer/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <Layout>
+            <Hero />
+            <Preview />
+            <About />
+          </Layout>
+        } />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+    </Router>
   );
 }
 

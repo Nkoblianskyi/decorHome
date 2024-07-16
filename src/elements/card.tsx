@@ -1,30 +1,26 @@
+import React from 'react';
 
-const item = [
-    {src:'/image1.jpg', name:'Cammile', price:'$ 65'},
-    {src:'/image2.jpg', name:'Cammile', price:'$ 100'},
-    {src:'/image3.jpg', name:'Cammile', price:'$ 85'},
-    
-]
+interface Item {
+    id: number;
+    src: string;
+    name: string;
+    price: string;
+}
 
-export const Card = () => {
+interface CardProps {
+    item: Item;
+}
 
+export const Card: React.FC<CardProps> = ({ item }) => {
     return (
         <div className="card">
-            {item.map((link, index) => (
-                <div key={index} className="card-wrapp">
-                    <div className="card-wrapp-item">
-                        <img 
-                        src={link.src} 
-                        alt=""
-                        className="card-wrapp-item-img"
-                        />
-                    </div>
-                    <div className="card-wrapp-text">
-                        <h1 className="card-wrapp-text-name">{link.name}</h1>
-                        <p className="card-wrapp-text-price">{link.price}</p>
-                    </div>
+            <div className="card-wrap">
+                <img src={item.src} alt={item.name} className="card-wrap-img" />
+                <div className="card-wrap-text">
+                    <h2 className="card-wrap-text-name">{item.name}</h2>
+                    <p className="card-wrap-text-price">{item.price}</p>
                 </div>
-            ))}
+            </div>
         </div>
-    )
-}
+    );
+};
