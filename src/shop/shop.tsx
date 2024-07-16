@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from "../elements/card";
 
 interface Item {
@@ -19,13 +19,17 @@ export const Shop = () => {
         { id: 7, src: '/image1.jpg', name: 'Cammile', price: '$75' },
         { id: 8, src: '/image2.jpg', name: 'Cammile', price: '$90' },
         { id: 9, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        // { id: 10, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        // { id: 11, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        // { id: 12, src: '/image3.jpg', name: 'Cammile', price: '$80' },
+        { id: 10, src: '/image3.jpg', name: 'Cammile', price: '$80' },
+        { id: 11, src: '/image3.jpg', name: 'Cammile', price: '$80' },
+        { id: 12, src: '/image3.jpg', name: 'Cammile', price: '$80' },
     ];
 
     const itemsPerPage = 9; // Кількість товарів на сторінці
     const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
 
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
@@ -46,7 +50,6 @@ export const Shop = () => {
                     <Card key={item.id} item={item} />
                 ))}
             </div>
-            {/* Навігація між сторінками */}
             {totalPages > 1 && (
                 <div className="pagination">
                     <button onClick={handlePrevPage} disabled={currentPage === 1}>Prev</button>
