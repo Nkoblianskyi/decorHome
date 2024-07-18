@@ -7,18 +7,18 @@ import { ShopPage } from './ShopPage';
 
 function App() {
   return (
-      <Router>
-        <Routes>
-          <Route path="/" element={
-            <Layout>
-              <Hero />
-              <Preview />
-              <About />
-            </Layout>
-          } />
-          <Route path="/shop" element={<ShopPage />} />
-        </Routes>
-      </Router>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <Layout>
+            <Hero />
+            <Preview />
+            <About />
+          </Layout>
+        } />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+    </Router>
   );
 }
 
