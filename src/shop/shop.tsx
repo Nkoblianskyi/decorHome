@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Card } from "../elements/card";
+import itemsData from '../mocks/items.json';
+
 
 interface Item {
     id: number;
@@ -9,26 +11,21 @@ interface Item {
 }
 
 export const Shop = () => {
-    const items: Item[] = [
-        { id: 1, src: '/image1.jpg', name: 'Cammile', price: '$65' },
-        { id: 2, src: '/image2.jpg', name: 'Cammile', price: '$100' },
-        { id: 3, src: '/image3.jpg', name: 'Cammile', price: '$85' },
-        { id: 4, src: '/image1.jpg', name: 'Cammile', price: '$75' },
-        { id: 5, src: '/image2.jpg', name: 'Cammile', price: '$90' },
-        { id: 6, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        { id: 7, src: '/image1.jpg', name: 'Cammile', price: '$75' },
-        { id: 8, src: '/image2.jpg', name: 'Cammile', price: '$90' },
-        { id: 9, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        { id: 10, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        { id: 11, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-        { id: 12, src: '/image3.jpg', name: 'Cammile', price: '$80' },
-    ];
+    const [items, setItems] = useState<Item[]>([]);
+
+    useEffect(() => {
+            setItems(itemsData);
+    }, []);;
 
     const itemsPerPage = 9; // Кількість товарів на сторінці
     const [currentPage, setCurrentPage] = useState(1);
+    const shopTitleRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // Прокрутка до заголовку "Shop" після зміни сторінки
+        if (shopTitleRef.current) {
+            shopTitleRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
     }, [currentPage]);
 
     const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -43,9 +40,8 @@ export const Shop = () => {
 
     return (
         <div className="shop">
-            <h1>Shop</h1>
+            <h1 ref={shopTitleRef}>Shop</h1>
             <div className="shop-list">
-                {/* Відображення товарів на поточній сторінці */}
                 {items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
                     <Card key={item.id} item={item} />
                 ))}

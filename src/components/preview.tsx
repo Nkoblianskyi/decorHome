@@ -1,24 +1,40 @@
+import { useEffect, useState } from "react";
+
 import { Card } from "../elements/card";
 import { Link } from 'react-router-dom';
 
 
-const icon = [
+const itemsData: Item[] = require('../mocks/items.json');
+
+interface Item {
+    id: number;
+    src: string;
+    name: string;
+    price: string;
+}
+
+const icons = [
     { src: '/shippingsvg.svg', title: 'Free Shipping', text: 'No charge for each delivery' },
     { src: '/wallet.svg', title: 'Quick Payment', text: '100% secure payment' },
     { src: '/support.svg', title: '10:00-19:00 Support', text: 'Quick support' },
 ];
 
-const itemsPreview = [
-    { id: 1, src: '/image1.jpg', name: 'Cammile', price: '$65' },
-    { id: 2, src: '/image2.jpg', name: 'Cammile', price: '$100' },
-    { id: 3, src: '/image3.jpg', name: 'Cammile', price: '$85' },
-];
+const previewIds = [1, 5, 8];
 
 export const Preview = () => {
+    const [items, setItems] = useState<Item[]>([]);
+
+    useEffect(() => {
+
+        setItems(itemsData);
+    }, []);
+
+    const itemsPreview = items.filter(item => previewIds.includes(item.id));
+
     return (
         <div className="preview">
             <div className="preview-icons">
-                {icon.map((link, index) => (
+                {icons.map((link, index) => (
                     <div key={index} className="preview-icon-wrap">
                         <img
                             src={link.src}
@@ -52,7 +68,6 @@ export const Preview = () => {
                     ))}
                 </div>
             </div>
-
         </div>
     );
 };
