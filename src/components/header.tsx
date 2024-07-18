@@ -5,7 +5,7 @@ import { Menu } from "../elements/menu"
 export const Header = () => {
 
     return (
-        <div className="header">
+        <header className="header">
                 <div className="header-logo">
                     <Logo />
                 </div>
@@ -15,6 +15,6 @@ export const Header = () => {
                 <div className="header-basket">
                     <Basket />
                 </div>
-        </div>
+        </header>
     )
 }

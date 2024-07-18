@@ -10,7 +10,7 @@ export const Footer = () => {
     ];
     
     return (
-        <div className="footer">
+        <footer className="footer">
             <Logo/>
             <Menu/>
             <address className="footer-address">
@@ -39,6 +39,6 @@ export const Footer = () => {
             <div className="footer-producer">
                 <p className="footer-producer-text">© 2024 Nykyta Koblianskyi- All rights reserved. </p>
             </div>
-        </div>
+        </footer>
     )
 }
