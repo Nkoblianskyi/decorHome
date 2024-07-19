@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/decorHome/static/css/main.b29e033c.css",
+    "main.js": "/decorHome/static/js/main.649e8fa5.js",
+    "index.html": "/decorHome/index.html",
+    "main.b29e033c.css.map": "/decorHome/static/css/main.b29e033c.css.map",
+    "main.649e8fa5.js.map": "/decorHome/static/js/main.649e8fa5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b29e033c.css",
+    "static/js/main.649e8fa5.js"
+  ]
+}
