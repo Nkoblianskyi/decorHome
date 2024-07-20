@@ -1,9 +1,10 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Preview } from "./components/preview";
 import { Hero } from "./components/hero";
 import { About } from "./components/about";
 import { Layout } from "./layouts/layout";
 import { ShopPage } from './ShopPage';
+import React from "react";
 
 function App() {
   return (
